@@ -2,7 +2,7 @@
   "name": "@tolt/webhooks",
   "version": "0.1.0",
   "description": "Verify and type Tolt webhooks. A dependency-free signature verifier plus typed events.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
   "files": [

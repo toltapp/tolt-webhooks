@@ -82,4 +82,4 @@ Every event is `{ type, data, timestamp }`.
 
 ## License
 
-MIT
+Apache-2.0

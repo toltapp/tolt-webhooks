@@ -36,8 +36,16 @@ type Resource = { id: string; organization_id: string; created_at?: string; [key
 export type ToltPartner = Resource & { program_id?: string; email?: string; first_name?: string; last_name?: string };
 export type ToltLink = Resource & { param?: string; value?: string; partner_id?: string };
 export type ToltCustomer = Resource & { email?: string; status?: string; partner_id?: string };
-export type ToltTransaction = Resource & { amount?: number; currency?: string; status?: string; customer_id?: string };
-export type ToltCommission = Resource & { amount?: number; status?: string; transaction_id?: string; partner_id?: string };
+/** Money in cents, serialized as a string (e.g. `"4900"`). Parse it before doing math. */
+export type ToltCents = string;
+export type ToltTransaction = Resource & { amount?: ToltCents | null; currency?: string; status?: string; customer_id?: string };
+export type ToltCommission = Resource & {
+  amount?: ToltCents | null;
+  revenue?: ToltCents | null;
+  status?: string;
+  transaction_id?: string;
+  partner_id?: string;
+};
 
 type Envelope<T extends ToltEventType, D> = {
   /** The event name, e.g. `"commission.created"`. */

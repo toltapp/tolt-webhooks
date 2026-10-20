@@ -26,8 +26,8 @@ export async function POST(req: Request) {
 
   switch (event.type) {
     case "commission.created":
-      // event.data is a ToltCommission
-      await payPartner(event.data.partner_id, event.data.amount);
+      // event.data is a ToltCommission; money fields are cents as strings
+      await payPartner(event.data.partner_id, Number(event.data.amount));
       break;
     case "partner.created":
       await onboard(event.data.email);
